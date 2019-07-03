@@ -21,7 +21,7 @@ public class Main {
             AuthService.connection();
 //            String str = AuthService.getNickByLoginAndPass("login1","pass1");
 //            System.out.println(str);
-            server = new ServerSocket(8189);
+            server = new ServerSocket(8188);
             System.out.println("Сервер запущен");
 
             while (true) {

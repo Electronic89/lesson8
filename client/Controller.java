@@ -17,6 +17,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Handler;
 
@@ -38,6 +40,9 @@ public class Controller {
     HBox upperPanel;
 
     @FXML
+    HBox regbutton;
+
+    @FXML
     TextField loginField;
 
     @FXML
@@ -53,6 +58,8 @@ public class Controller {
         if(!isAuthorized) {
             upperPanel.setVisible(true);
             upperPanel.setManaged(true);
+            regbutton.setVisible(true);
+            regbutton.setManaged(true);
             bottomPanel.setVisible(false);
             bottomPanel.setManaged(false);
             clientList.setVisible(false);
@@ -60,6 +67,8 @@ public class Controller {
         } else {
             upperPanel.setVisible(false);
             upperPanel.setManaged(false);
+            regbutton.setVisible(false);
+            regbutton.setManaged(false);
             bottomPanel.setVisible(true);
             bottomPanel.setManaged(true);
             clientList.setVisible(true);
@@ -72,7 +81,7 @@ public class Controller {
     DataOutputStream out;
 
     final String IP_ADRESS = "localhost";
-    final int PORT = 8189;
+    final int PORT = 8188;
 
     public void connect() {
         try {
@@ -110,7 +119,9 @@ public class Controller {
                                     }
                                 });
                             } else {
-                                textArea.appendText(str + "\n");
+                                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+                                LocalDateTime now = LocalDateTime.now();
+                                textArea.appendText(dtf.format(now) + ":" + str + "\n");
                             }
                         }
 

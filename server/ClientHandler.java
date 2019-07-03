@@ -54,6 +54,21 @@ public class ClientHandler {
                                     sendMsg("Неверный логин/пароль");
                                 }
                             }
+                            if (str.startsWith("/reg")) {
+                                String[] tokens = str.split(" ");
+                                String newNick = AuthService.getNickByLoginAndPass(tokens[1], tokens[2]);
+                                if (newNick != null) {
+                                    if (!server.isNickBusy(newNick)) {
+                                        sendMsg("/reg");
+                                        nick = newNick;
+                                        server.subscribe(ClientHandler.this);
+                                        break;
+                                    } else {
+                                        sendMsg("Учетная запись уже используется");
+                                    }
+                                }
+                            }
+
                             server.broadcastMsg(ClientHandler.this, str);
                         }
 

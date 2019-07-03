@@ -13,11 +13,15 @@
       fx:controller="Lesson_6.client.Controller">
 
     <HBox fx:id="upperPanel">
-        <TextField HBox.hgrow="ALWAYS" promptText="Логин" fx:id="loginField"/>
-        <PasswordField  promptText="Пароль" fx:id="passwordField" onAction="#tryToAuth"/>
-        <Button text="Aвторизоваться" onAction="#tryToAuth"/>
-    </HBox>
+        <TextField HBox.hgrow="ALWAYS" promptText="Логин" fx:id="loginField" />
+        <PasswordField  promptText="Пароль" fx:id="passwordField" onAction="#tryToAuth" minWidth="175"/>
 
+
+    </HBox>
+    <HBox fx:id="regbutton">
+    <Button text="Aвторизоваться" onAction="#tryToAuth" prefWidth="200"/>
+    <Button text="Регистрация" onAction="#tryToAuth" prefWidth="200"/>
+    </HBox>
     <HBox VBox.vgrow="ALWAYS">
         <VBox HBox.hgrow="ALWAYS">
             <TextArea fx:id="textArea" editable="false" VBox.vgrow="ALWAYS" />
